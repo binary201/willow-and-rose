@@ -1,0 +1,79 @@
+{
+  "_comment": "This file is the canonical seed/fallback for the Google Sheet. It is NOT loaded at runtime — the live site fetches the Google Sheet defined in index.html. Use this file to (a) seed the Google Sheet on first setup, (b) verify required column headers, and (c) restore content if the sheet is ever lost.",
+  "_sheet_setup": {
+    "tabs": ["Packages", "Addons", "Portfolio"],
+    "share_setting": "Anyone with the link can view",
+    "data_proxy": "https://opensheet.elk.sh/<SHEET_ID>/<TabName>",
+    "notes": "List fields like 'features' and 'tags' must be separated with the pipe character | inside a single sheet cell. The 'featured' column accepts yes/no, true/false, 1/0."
+  },
+  "Packages": [
+    {
+      "name": "The Intimate",
+      "for": "For 2 guests",
+      "desc": "A romantic escape for two",
+      "features": "Curated blanket & cushion setup|Styled table décor & centrepiece|Personalised signage|Floral arrangement|2-hour window · Setup included",
+      "price": "$150",
+      "price_note": "/ experience",
+      "featured": "no",
+      "icon": "🌿"
+    },
+    {
+      "name": "The Gathering",
+      "for": "For 3–4 guests",
+      "desc": "Effortless elegance for a small group",
+      "features": "Full linen table & floor setup|Styled cushions & layered textiles|Abundant floral arrangement|Personalised signage & décor|Champagne or welcome drinks|3-hour window · Setup included",
+      "price": "$200",
+      "price_note": "/ experience",
+      "featured": "yes",
+      "icon": "🌸"
+    },
+    {
+      "name": "The Celebration",
+      "for": "For 5–8 guests",
+      "desc": "A grand experience for the whole group",
+      "features": "Grand linen table & full floor setup|Luxury cushions & styled throws|Floral installation centrepiece|Custom signage & personalisation|Full drinks & grazing spread|4-hour window · On-site host",
+      "price": "$280",
+      "price_note": "/ experience",
+      "featured": "no",
+      "icon": "✨"
+    }
+  ],
+  "Addons": [
+    {
+      "name": "Bouquet of Flowers",
+      "price": "$30 per dozen",
+      "desc": "Fresh, seasonal blooms beautifully wrapped and presented alongside your setup.",
+      "tags": "Fresh Florals|Seasonal",
+      "icon": "🌹"
+    },
+    {
+      "name": "Floral Arrangement",
+      "price": "From $20+",
+      "desc": "Bespoke fresh floral centrepieces designed for your table, tailored to your colour palette.",
+      "tags": "Table Centrepiece|Bespoke",
+      "icon": "💐"
+    },
+    {
+      "name": "Painting for Two",
+      "price": "$30",
+      "desc": "Canvas, easel, paint and brushes fully provided — a fun and romantic activity for couples.",
+      "tags": "Couples Activity|All Included",
+      "icon": "🎨"
+    },
+    {
+      "name": "Tan Canopy 10×10",
+      "price": "$40",
+      "desc": "A stunning boho-style canopy providing shade, shelter and the most beautiful photo backdrop.",
+      "tags": "Shade & Shelter|Photo-Perfect",
+      "icon": "⛺"
+    }
+  ],
+  "Portfolio": [
+    { "caption": "Golden hour tables",  "image_url": "/images/portfolio/1.jpg", "size": "tall" },
+    { "caption": "Blush & roses",       "image_url": "/images/portfolio/2.jpg", "size": "" },
+    { "caption": "Candlelit evenings",  "image_url": "/images/portfolio/3.jpg", "size": "" },
+    { "caption": "Styled for you",      "image_url": "/images/portfolio/4.jpg", "size": "" },
+    { "caption": "Garden evenings",     "image_url": "/images/portfolio/5.jpg", "size": "" },
+    { "caption": "The full experience", "image_url": "/images/portfolio/6.jpg", "size": "wide" }
+  ]
+}

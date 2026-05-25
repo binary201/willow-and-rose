@@ -1,0 +1,16 @@
+{
+  "name": "willow-and-rose",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Willow & Rosé — Luxury Picnic Experiences. Static site + one Vercel serverless function for inquiry email via Gmail SMTP.",
+  "type": "module",
+  "scripts": {
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "nodemailer": "^8.0.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

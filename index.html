@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Willow & Rosé — Luxury Picnic Experiences</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --f1:#1C2E22;--f2:#2E4835;--f3:#3D5A44;--f4:#5A7A62;--f5:#8AAA90;--f6:#B5C8BA;--fp:#EDF2EE;
+  --b1:#C4849A;--b2:#D4A0B4;--b3:#EDB5C4;--b4:#F5D4E0;--bp:#FDF0F4;
+  --iv:#FDFAF5;--iv2:#F8F3EC;--iv3:#EDE4D8;--iv4:#C9BAA8;
+  --gd:#C4A060;--gd2:#D4B483;
+  --sr:'Playfair Display',Georgia,serif;
+  --sr2:'Cormorant Garamond',Georgia,serif;
+  --sn:'Jost',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--iv);color:var(--f1);font-family:var(--sn);font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0.5rem 3.5rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,box-shadow 0.4s;}
+nav.scrolled{background:rgba(253,250,245,0.97);box-shadow:0 2px 30px rgba(28,46,34,0.08);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;line-height:0;}
+.nav-logo img{height:130px;width:auto;display:block;filter:drop-shadow(0 2px 12px rgba(0,0,0,0.35));transition:filter 0.4s;}
+nav.scrolled .nav-logo img{filter:none;}
+.nav-links{display:flex;gap:2.6rem;list-style:none;}
+.nav-links a{font-size:0.95rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,0.85);transition:color 0.3s;}
+nav.scrolled .nav-links a{color:var(--f2);}
+.nav-links a:hover{color:var(--b3);}
+.nav-cta{background:var(--b1);color:#fff;padding:0.75rem 1.9rem;font-size:0.9rem;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--sn);text-decoration:none;display:inline-block;transition:background 0.2s;}
+.nav-cta:hover{background:var(--b2);}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:#1C2E22 url('images/hero-bg.png') center/cover no-repeat;}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(237,181,196,0.12) 0%,transparent 60%),radial-gradient(ellipse at 20% 70%,rgba(61,90,68,0.25) 0%,transparent 55%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(28,46,34,0.55) 0%,rgba(28,46,34,0.45) 40%,rgba(28,46,34,0.75) 100%);}
+.hero-content{position:relative;z-index:2;max-width:780px;padding:0 2rem;}
+.hero-badge{display:inline-block;border:1px solid rgba(237,181,196,0.5);padding:0.4rem 1.4rem;font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--b3);margin-bottom:1.8rem;}
+.hero-h1{font-family:var(--sr);font-size:5rem;font-weight:400;line-height:1.05;color:#fff;margin-bottom:1.2rem;}
+.hero-h1 em{font-style:italic;color:var(--b3);}
+.hero-sub{font-family:var(--sr2);font-size:1.2rem;font-style:italic;color:rgba(255,255,255,0.72);margin-bottom:0.6rem;}
+.hero-desc{font-size:0.85rem;color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto 2.5rem;line-height:1.9;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.hbtn-main{background:var(--b1);color:#fff;padding:1rem 2.5rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--sn);transition:background 0.2s;}
+.hbtn-main:hover{background:var(--b2);}
+.hbtn-ghost{background:transparent;color:#fff;padding:1rem 2.5rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.35);cursor:pointer;font-family:var(--sn);transition:all 0.2s;}
+.hbtn-ghost:hover{border-color:var(--b3);color:var(--b3);}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:0;border-top:1px solid rgba(255,255,255,0.1);}
+.hstat{flex:1;max-width:200px;text-align:center;padding:1.5rem 1rem;border-right:1px solid rgba(255,255,255,0.1);}
+.hstat:last-child{border-right:none;}
+.hstat-num{font-family:var(--sr);font-size:1.8rem;color:#fff;}
+.hstat-lbl{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+
+/* ===== SECTION SHARED ===== */
+.sec{padding:6rem 3.5rem;}
+.sec-center{text-align:center;}
+.eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--b1);margin-bottom:0.7rem;}
+.eyebrow-line{display:flex;align-items:center;justify-content:center;gap:0.8rem;margin-bottom:0.7rem;}
+.eyebrow-line::before,.eyebrow-line::after{content:'';width:35px;height:1px;background:var(--b3);}
+.sec-title{font-family:var(--sr);font-size:2.8rem;font-weight:400;color:var(--f1);line-height:1.15;margin-bottom:0.6rem;}
+.sec-title em{font-style:italic;color:var(--b1);}
+.sec-sub{font-size:0.85rem;color:var(--f4);max-width:560px;margin:0 auto;line-height:1.85;}
+
+/* ===== HOW WE HELP ===== */
+.help{background:var(--iv2);}
+.help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:3.5rem auto 0;}
+.help-card{background:var(--iv);padding:2.5rem 2rem;border:1px solid var(--iv3);text-align:center;transition:box-shadow 0.3s,transform 0.3s;}
+.help-card:hover{box-shadow:0 12px 40px rgba(28,46,34,0.09);transform:translateY(-4px);}
+.help-icon{width:54px;height:54px;border-radius:50%;background:var(--bp);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 1.2rem;}
+.help-title{font-family:var(--sr);font-size:1.15rem;color:var(--f1);margin-bottom:0.6rem;}
+.help-text{font-size:0.8rem;color:var(--f4);line-height:1.8;margin-bottom:1.2rem;}
+.help-link{font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--b1);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;}
+.help-link::after{content:'→';}
+.help-link:hover{color:var(--f2);}
+
+/* ===== PACKAGES ===== */
+.packages{background:var(--iv);}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:3.5rem auto 0;}
+.pkg{background:var(--iv2);border:1px solid var(--iv3);overflow:hidden;position:relative;transition:transform 0.3s,box-shadow 0.3s;}
+.pkg:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(28,46,34,0.11);}
+.pkg.featured{border-color:var(--f3);border-width:2px;background:var(--iv);}
+.pkg-top-img{height:160px;position:relative;overflow:hidden;}
+.pkg-top-img-inner{width:100%;height:100%;background:linear-gradient(135deg,var(--f3),var(--f1));display:flex;align-items:center;justify-content:center;}
+.pkg.featured .pkg-top-img-inner{background:linear-gradient(135deg,var(--b3),var(--b1));}
+.pkg-top-img-icon{font-size:2.5rem;opacity:0.6;}
+.pkg-ribbon{position:absolute;top:1rem;right:1rem;background:var(--f2);color:var(--fp);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.9rem;}
+.pkg-body{padding:1.8rem;}
+.pkg-for{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--b1);margin-bottom:0.5rem;}
+.pkg-name{font-family:var(--sr);font-size:1.45rem;color:var(--f1);margin-bottom:0.2rem;}
+.pkg-desc{font-family:var(--sr2);font-style:italic;font-size:0.88rem;color:var(--f4);margin-bottom:1.2rem;}
+.pkg-divider{width:40px;height:1px;background:var(--iv3);margin-bottom:1.2rem;}
+.pkg-features{list-style:none;margin-bottom:1.6rem;}
+.pkg-features li{font-size:0.8rem;padding:0.32rem 0;border-bottom:1px solid var(--iv3);display:flex;align-items:flex-start;gap:0.5rem;color:var(--f2);}
+.pkg-features li::before{content:'✦';color:var(--b3);font-size:0.45rem;margin-top:6px;flex-shrink:0;}
+.pkg-price-row{display:flex;align-items:baseline;gap:0.3rem;margin-bottom:1.4rem;}
+.pkg-price{font-family:var(--sr);font-size:2.4rem;color:var(--f1);}
+.pkg-pnote{font-size:0.72rem;color:var(--f5);}
+.btn-pkg{width:100%;padding:0.85rem;font-family:var(--sn);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--iv3);background:transparent;color:var(--f1);}
+.btn-pkg:hover,.pkg.featured .btn-pkg{background:var(--f2);border-color:var(--f2);color:#fff;}
+.pkg.featured .btn-pkg:hover{background:var(--f1);border-color:var(--f1);}
+
+/* ===== GALLERY MOSAIC ===== */
+.gallery-sec{background:var(--iv2);padding:6rem 3.5rem;}
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:8px;max-width:1100px;margin:3.5rem auto 0;}
+.gm-item{overflow:hidden;position:relative;}
+.gm-item.tall{grid-row:span 2;}
+.gm-item.wide{grid-column:span 2;}
+.gm-inner{width:100%;height:100%;transition:transform 0.55s ease;background-size:cover;background-position:center;}
+.gm-item:hover .gm-inner{transform:scale(1.06);}
+.gc1{background:linear-gradient(160deg,var(--f3),var(--f1));}
+.gc2{background:linear-gradient(135deg,var(--b3),var(--b1));}
+.gc3{background:linear-gradient(135deg,var(--f4),var(--f2));}
+.gc4{background:linear-gradient(135deg,var(--b2),var(--b1));}
+.gc5{background:linear-gradient(160deg,var(--f3),var(--f4));}
+.gc6{background:linear-gradient(135deg,#C9B99A,#9C7B5A);}
+.gm-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:linear-gradient(transparent,rgba(28,46,34,0.6));}
+.gm-cap{font-family:var(--sr2);font-style:italic;font-size:0.9rem;color:rgba(253,250,245,0.9);}
+.gallery-cta{text-align:center;margin-top:2.5rem;}
+.btn-outline-dark{background:transparent;color:var(--f1);padding:0.9rem 2.5rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;border:1.5px solid var(--iv4);cursor:pointer;font-family:var(--sn);transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline-dark:hover{background:var(--f1);border-color:var(--f1);color:#fff;}
+
+/* ===== ADD-ONS ===== */
+.addons{background:var(--f1);padding:6rem 3.5rem;}
+.addons .eyebrow{color:var(--b3);}
+.addons .eyebrow-line::before,.addons .eyebrow-line::after{background:var(--f4);}
+.addons .sec-title{color:#fff;}
+.addons .sec-title em{color:var(--b3);}
+.addons .sec-sub{color:var(--f5);}
+.addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1100px;margin:3.5rem auto 0;}
+.addon{background:var(--f2);padding:2rem;display:flex;gap:1.5rem;align-items:flex-start;border:1px solid rgba(181,200,186,0.08);transition:background 0.2s;}
+.addon:hover{background:var(--f3);}
+.addon-icon-box{width:52px;height:52px;border-radius:50%;background:rgba(237,181,196,0.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.addon-content{}
+.addon-name{font-family:var(--sr);font-size:1.05rem;color:#fff;margin-bottom:0.2rem;}
+.addon-price{font-size:0.75rem;color:var(--b3);letter-spacing:0.1em;margin-bottom:0.5rem;}
+.addon-desc{font-size:0.78rem;color:var(--f5);line-height:1.65;}
+.addon-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;}
+.addon-tag{font-size:0.6rem;letter-spacing:0.12em;padding:0.2rem 0.6rem;background:rgba(181,200,186,0.12);color:var(--f5);text-transform:uppercase;}
+
+/* ===== CTA BANNER ===== */
+.cta-banner{background:linear-gradient(135deg,var(--b1) 0%,var(--b2) 50%,var(--b3) 100%);padding:4rem 3.5rem;text-align:center;}
+.cta-banner h2{font-family:var(--sr);font-size:2.4rem;color:#fff;margin-bottom:0.8rem;}
+.cta-banner p{font-family:var(--sr2);font-style:italic;font-size:1.1rem;color:rgba(255,255,255,0.8);margin-bottom:2rem;}
+.btn-cta-white{background:#fff;color:var(--b1);padding:1rem 3rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--sn);transition:all 0.2s;font-weight:500;}
+.btn-cta-white:hover{background:var(--f1);color:#fff;}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{background:var(--iv2);padding:6rem 3.5rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:3.5rem auto 0;}
+.testi{background:var(--iv);padding:2.2rem;border:1px solid var(--iv3);}
+.testi-stars{color:var(--gd);font-size:0.72rem;letter-spacing:3px;margin-bottom:0.8rem;}
+.testi-q{font-family:var(--sr);font-size:3rem;color:var(--b3);line-height:0.3;margin-bottom:1.2rem;opacity:0.5;}
+.testi-text{font-family:var(--sr2);font-style:italic;font-size:1rem;color:var(--f1);line-height:1.75;margin-bottom:1.4rem;}
+.testi-name{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--f2);}
+.testi-occ{font-size:0.7rem;color:var(--b1);}
+/* Featured quote */
+.testi-feature{background:var(--f1);padding:3.5rem;text-align:center;margin:3rem auto 0;max-width:1100px;position:relative;}
+.testi-feature::before{content:'"';font-family:var(--sr);font-size:8rem;color:rgba(237,181,196,0.15);position:absolute;top:-1rem;left:2rem;line-height:1;}
+.testi-feature-text{font-family:var(--sr);font-size:1.5rem;font-style:italic;color:#fff;line-height:1.55;margin-bottom:1.5rem;position:relative;z-index:1;}
+.testi-feature-stars{color:var(--gd);font-size:0.85rem;letter-spacing:4px;margin-bottom:1rem;}
+.testi-feature-author{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--b3);}
+.testi-counters{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:3rem auto 0;border:1px solid var(--iv3);}
+.counter{text-align:center;padding:2rem 1rem;border-right:1px solid var(--iv3);}
+.counter:last-child{border-right:none;}
+.counter-num{font-family:var(--sr);font-size:2.2rem;color:var(--f1);}
+.counter-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--f4);margin-top:0.3rem;}
+
+/* ===== BOOKING FORM ===== */
+.booking{display:grid;grid-template-columns:1fr 1fr;}
+.booking-img{position:relative;background:linear-gradient(160deg,var(--f3) 0%,var(--f2) 50%,var(--f1) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3.5rem;min-height:700px;}
+.booking-img::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,46,34,0.85) 0%,rgba(28,46,34,0.2) 60%);}
+.booking-img-content{position:relative;z-index:1;}
+.booking-img-title{font-family:var(--sr);font-size:2.5rem;color:#fff;margin-bottom:0.8rem;line-height:1.2;}
+.booking-img-title em{font-style:italic;color:var(--b3);}
+.booking-img-sub{font-family:var(--sr2);font-style:italic;font-size:1.1rem;color:rgba(253,250,245,0.7);margin-bottom:2rem;}
+.booking-contact{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.booking-contact li{display:flex;align-items:center;gap:0.7rem;font-size:0.8rem;color:rgba(253,250,245,0.75);}
+.booking-contact a{color:inherit;text-decoration:none;transition:color 0.2s;}
+.booking-contact a:hover{color:var(--b3);}
+.bc-dot{width:5px;height:5px;background:var(--b3);border-radius:50%;flex-shrink:0;}
+.booking-form-panel{background:var(--iv);padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;}
+.booking-form-panel .eyebrow-line{justify-content:flex-start;}
+.booking-form-panel .eyebrow-line::before{display:none;}
+.booking-form-panel h2{font-family:var(--sr);font-size:2.2rem;color:var(--f1);margin-bottom:0.5rem;margin-top:0.5rem;}
+.booking-form-panel h2 em{font-style:italic;color:var(--b1);}
+.booking-form-panel p{font-size:0.83rem;color:var(--f4);margin-bottom:2rem;line-height:1.8;}
+.form-fields{display:flex;flex-direction:column;gap:1rem;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.field label{display:block;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--f4);margin-bottom:0.4rem;}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1px solid var(--iv3);padding:0.75rem 1rem;color:var(--f1);font-family:var(--sn);font-size:0.87rem;font-weight:300;outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--b1);}
+.field textarea{resize:vertical;min-height:90px;}
+.btn-submit{background:var(--b1);color:#fff;width:100%;padding:1.05rem;font-family:var(--sn);font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.btn-submit:hover{background:var(--f2);}
+.btn-submit:disabled{opacity:0.7;cursor:not-allowed;}
+.addon-checks{border:none;padding:0;margin:0;}
+.addon-checks legend{display:block;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--f4);margin-bottom:0.55rem;}
+.addon-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+.addon-check{display:flex;align-items:center;gap:0.55rem;background:#fff;border:1px solid var(--iv3);padding:0.65rem 0.8rem;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.addon-check:hover{border-color:var(--b2);}
+.addon-check input{width:16px;height:16px;accent-color:var(--b1);cursor:pointer;flex-shrink:0;margin:0;}
+.addon-check-label{font-size:0.78rem;color:var(--f1);line-height:1.3;}
+.addon-check-label small{display:block;font-size:0.68rem;color:var(--f4);margin-top:1px;}
+.form-status{font-size:0.8rem;padding:0.85rem 1rem;margin-top:0.4rem;display:none;}
+.form-status.show{display:block;}
+.form-status.success{background:#E8F0E9;color:var(--f2);border-left:3px solid var(--f3);}
+.form-status.error{background:#F8E4E4;color:#8B2A2A;border-left:3px solid #B84444;}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+/* ===== FOOTER ===== */
+.footer-top{background:var(--f1);padding:4rem 3.5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;}
+.ft-brand .ft-logo-img{height:160px;width:auto;margin-bottom:1.2rem;display:block;filter:drop-shadow(0 2px 14px rgba(0,0,0,0.3));}
+.ft-brand .ft-desc{font-size:0.78rem;color:var(--f5);line-height:1.8;}
+.ft-col h4{font-family:var(--sr);font-size:0.95rem;color:#fff;margin-bottom:1rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.ft-col ul li a{font-size:0.78rem;color:var(--f5);text-decoration:none;transition:color 0.2s;}
+.ft-col ul li a:hover{color:var(--b3);}
+.footer-bottom{background:#111E15;padding:1.3rem 3.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--f3);}
+.fb-copy{font-size:0.68rem;color:var(--f5);}
+.fb-social{display:flex;gap:1.2rem;}
+.fb-social a{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--f5);text-decoration:none;transition:color 0.2s;}
+.fb-social a:hover{color:var(--b3);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.hero-badge{animation:fadeUp 0.7s ease both 0.1s;}
+.hero-h1{animation:fadeUp 0.7s ease both 0.25s;}
+.hero-sub{animation:fadeUp 0.7s ease both 0.38s;}
+.hero-desc{animation:fadeUp 0.7s ease both 0.48s;}
+.hero-btns{animation:fadeUp 0.7s ease both 0.6s;}
+
+/* ===== HAMBURGER MENU ===== */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.nav-hamburger span{display:block;width:24px;height:1.5px;background:#fff;transition:all 0.3s ease;}
+nav.scrolled .nav-hamburger span{background:var(--f1);}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.nav-mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--f1);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.nav-mobile-menu.open{display:flex;}
+.nav-mobile-menu a{font-family:var(--sr);font-size:2rem;font-weight:400;color:#fff;text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
+.nav-mobile-menu a:hover{color:var(--b3);}
+.nav-mobile-menu .mob-cta{background:var(--b1);color:#fff;padding:0.85rem 2.5rem;font-family:var(--sn);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-top:1rem;}
+.mob-menu-logo{height:140px;width:auto;margin-bottom:0.5rem;filter:drop-shadow(0 2px 14px rgba(0,0,0,0.4));}
+.nav-mobile-contact{font-size:0.72rem;letter-spacing:0.14em;color:var(--f5);margin-top:1rem;}
+
+/* ===== MOBILE BREAKPOINTS ===== */
+@media(max-width:768px){
+
+  /* NAV */
+  nav{padding:0.5rem 1.2rem;}
+  .nav-links,.nav-cta{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-logo img{height:72px;}
+  .nav-mobile-menu{justify-content:flex-start;padding:4rem 1.5rem 2rem;gap:1.4rem;overflow-y:auto;}
+  .nav-mobile-menu a{font-size:4.5rem;}
+  .mob-menu-logo{height:100px;margin-bottom:0.2rem;}
+
+  /* HERO */
+  .hero{min-height:100svh;}
+  .hero-content{padding:0 1.5rem;}
+  .hero-badge{font-size:0.58rem;letter-spacing:0.18em;padding:0.35rem 1rem;}
+  .hero-h1{font-size:2.8rem;line-height:1.08;}
+  .hero-sub{font-size:1rem;}
+  .hero-desc{font-size:0.82rem;}
+  .hbtn-main,.hbtn-ghost{width:100%;padding:0.9rem 1rem;font-size:0.68rem;}
+  .hero-btns{flex-direction:column;gap:0.75rem;width:100%;max-width:320px;margin:0 auto;}
+  .hero-stats{position:relative;bottom:auto;flex-wrap:wrap;}
+  .hstat{max-width:50%;flex:0 0 50%;border-right:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);}
+  .hstat:nth-child(2){border-right:none;}
+  .hstat:nth-child(3){border-bottom:none;}
+  .hstat:nth-child(4){border-right:none;border-bottom:none;}
+
+  /* SECTIONS */
+  .sec{padding:4rem 1.5rem;}
+  .sec-title{font-size:2rem;}
+  .gallery-sec{padding:4rem 0;}
+
+  /* HOW WE HELP */
+  .help-grid{grid-template-columns:1fr;gap:1rem;margin-top:2.5rem;}
+  .help-card{padding:1.8rem 1.5rem;text-align:left;display:flex;flex-direction:column;align-items:flex-start;}
+  .help-icon{margin:0 0 1rem 0;}
+
+  /* PACKAGES */
+  .pkg-grid{grid-template-columns:1fr;gap:1.2rem;margin-top:2.5rem;}
+  .pkg.featured{order:-1;}
+
+  /* GALLERY */
+  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px 160px;margin-top:2rem;}
+  .gm-item.tall{grid-row:span 1;}
+  .gm-item.wide{grid-column:span 2;}
+
+  /* ADD-ONS */
+  .addons{padding:4rem 1.5rem;}
+  .addon-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem;}
+  .addon{padding:1.5rem;}
+
+  /* CTA BANNER */
+  .cta-banner{padding:3rem 1.5rem;}
+  .cta-banner h2{font-size:1.8rem;}
+  .btn-cta-white{width:100%;padding:1rem;}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:4rem 1.5rem;}
+  .testi-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem;}
+  .testi-feature{padding:2.5rem 1.5rem;margin-top:1.5rem;}
+  .testi-feature-text{font-size:1.1rem;}
+  .testi-feature::before{font-size:5rem;top:-0.5rem;left:1rem;}
+  .testi-counters{grid-template-columns:1fr 1fr;margin-top:1.5rem;}
+  .counter{padding:1.5rem 0.8rem;border-bottom:1px solid var(--iv3);}
+  .counter:nth-child(1),.counter:nth-child(2){border-bottom:1px solid var(--iv3);}
+  .counter:nth-child(3),.counter:nth-child(4){border-bottom:none;}
+  .counter:nth-child(2),.counter:nth-child(4){border-right:none;}
+  .counter-num{font-size:1.8rem;}
+
+  /* BOOKING FORM */
+  .booking{grid-template-columns:1fr;}
+  .addon-check-grid{grid-template-columns:1fr;}
+  .field input,.field select,.field textarea{font-size:16px;}
+  .addon-check input{width:18px;height:18px;}
+  .booking-img{min-height:320px;padding:2.5rem 1.5rem;}
+  .booking-img-title{font-size:1.8rem;}
+  .booking-img-sub{font-size:1rem;margin-bottom:1.2rem;}
+  .booking-contact{gap:0.6rem;}
+  .booking-form-panel{padding:2.5rem 1.5rem;}
+  .booking-form-panel h2{font-size:1.8rem;}
+  .frow{grid-template-columns:1fr;}
+
+  /* FOOTER */
+  .footer-top{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem;}
+  .footer-bottom{flex-direction:column;gap:0.8rem;text-align:center;padding:1.2rem 1.5rem;}
+  .fb-social{justify-content:center;}
+
+  /* WHY STRIP */
+  .why{grid-template-columns:1fr 1fr;padding:2rem 1.5rem;}
+  .wi{border-right:none;border-bottom:1px solid var(--iv3);padding:1.2rem 0.8rem;}
+  .wi:nth-child(1),.wi:nth-child(2){border-right:none;}
+  .wi-icon{font-size:1.2rem;}
+}
+
+@media(max-width:480px){
+  .hero-h1{font-size:2.2rem;}
+  .sec-title{font-size:1.75rem;}
+  .hero-badge{display:none;}
+  .nav-logo img{height:64px;}
+  .mob-menu-logo{height:84px;}
+  .nav-mobile-menu a{font-size:3.6rem;}
+  .gallery-mosaic{grid-template-columns:1fr;grid-template-rows:auto;}
+  .gm-item,.gm-item.wide,.gm-item.tall{grid-column:span 1;grid-row:span 1;height:200px;}
+  .why{grid-template-columns:1fr;}
+  .wi{border-right:none;}
+  .testi-counters{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <img src="images/logo.png" alt="Willow & Rosé" class="mob-menu-logo"/>
+  <a href="#packages" onclick="closeMob()">Packages</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#addons" onclick="closeMob()">Add-Ons</a>
+  <a href="#testimonials" onclick="closeMob()">Reviews</a>
+  <a href="#booking" onclick="closeMob()" class="mob-cta">Book Now ♥</a>
+  <div class="nav-mobile-contact">832-263-8293 · bookings@willowandroseco.com</div>
+</div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" aria-label="Willow & Rosé — Luxury Picnic Experiences"><img src="images/logo.png" alt="Willow & Rosé"/></a>
+  <ul class="nav-links">
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#addons">Add-Ons</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMob()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">📍 Katy & Houston, Texas · Luxury Picnic Experiences</div>
+    <h1 class="hero-h1">Beautifully<br/><em>Curated</em> Moments</h1>
+    <p class="hero-sub">Beautiful Moments. Meaningful Memories.</p>
+    <p class="hero-desc">Bespoke luxury picnic experiences for couples, families & celebrations. We handle every detail — you simply arrive and indulge.</p>
+    <div class="hero-btns">
+      <button class="hbtn-main" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">View Packages</button>
+      <button class="hbtn-ghost" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Send an Inquiry</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">100+</div><div class="hstat-lbl">Events Styled</div></div>
+    <div class="hstat"><div class="hstat-num">5★</div><div class="hstat-lbl">Average Rating</div></div>
+    <div class="hstat"><div class="hstat-num">100%</div><div class="hstat-lbl">Stress-Free</div></div>
+    <div class="hstat"><div class="hstat-num">2</div><div class="hstat-lbl">Cities Served</div></div>
+  </div>
+</section>
+
+<!-- HOW WE HELP -->
+<section class="sec help" id="services">
+  <div class="sec-center">
+    <div class="eyebrow">How We Can Help</div>
+    <div class="eyebrow-line"></div>
+    <h2 class="sec-title">Every Occasion, <em>Beautifully Styled</em></h2>
+    <p class="sec-sub">Some love a classic. Others crave drama. Find the support that's right for you.</p>
+  </div>
+  <div class="help-grid">
+    <div class="help-card"><div class="help-icon">💑</div><div class="help-title">Date Nights & Proposals</div><div class="help-text">Intimate setups designed for romance — from candlelit evenings for two to breathtaking proposal moments your partner will never forget.</div><a href="#booking" class="help-link">Book Now</a></div>
+    <div class="help-card"><div class="help-icon">🎂</div><div class="help-title">Birthdays & Celebrations</div><div class="help-text">Make the birthday girl (or boy!) feel truly special. We'll create a show-stopping setup that has everyone reaching for their camera.</div><a href="#booking" class="help-link">Book Now</a></div>
+    <div class="help-card"><div class="help-icon">🥂</div><div class="help-title">Girls' Gatherings & Brunches</div><div class="help-text">Bottomless rosé optional. We create the perfect boho-luxe backdrop for your girls to relax, celebrate and make memories together.</div><a href="#booking" class="help-link">Book Now</a></div>
+    <div class="help-card"><div class="help-icon">🌸</div><div class="help-title">Design & Styling</div><div class="help-text">Full tablescape design tailored to your colour palette, theme, and vision. We source every detail from linens to florals to signage.</div><a href="#booking" class="help-link">Book Now</a></div>
+    <div class="help-card"><div class="help-icon">🪄</div><div class="help-title">Vendor Management</div><div class="help-text">From floral suppliers to catering partners, we coordinate all your vendors so you don't have to lift a finger on the day.</div><a href="#booking" class="help-link">Book Now</a></div>
+    <div class="help-card"><div class="help-icon">📸</div><div class="help-title">Full Production</div><div class="help-text">Setup, styling, breakdown — and everything in between. We arrive early, handle every detail, and leave you with nothing but memories.</div><a href="#booking" class="help-link">Book Now</a></div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="sec packages" id="packages">
+  <div class="sec-center">
+    <div class="eyebrow">Our Packages</div>
+    <div class="eyebrow-line"></div>
+    <h2 class="sec-title">Choose Your <em>Experience</em></h2>
+    <p class="sec-sub">Every setup is hand-styled, delivered, and ready for you to arrive and enjoy</p>
+  </div>
+  <div class="pkg-grid" id="pkgGrid">
+
+    <div class="pkg">
+      <div class="pkg-top-img"><div class="pkg-top-img-inner"><span class="pkg-top-img-icon">🌿</span></div></div>
+      <div class="pkg-body">
+        <div class="pkg-for">For 2 guests</div>
+        <div class="pkg-name">The Intimate</div>
+        <div class="pkg-desc">A romantic escape for two</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Curated blanket & cushion setup</li>
+          <li>Styled table décor & centrepiece</li>
+          <li>Personalised signage</li>
+          <li>Floral arrangement</li>
+          <li>2-hour window · Setup included</li>
+        </ul>
+        <div class="pkg-price-row"><span class="pkg-price">$150</span><span class="pkg-pnote">/ experience</span></div>
+        <button class="btn-pkg" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book This Experience</button>
+      </div>
+    </div>
+
+    <div class="pkg featured">
+      <div class="pkg-top-img"><div class="pkg-top-img-inner"><span class="pkg-top-img-icon">🌸</span></div><div class="pkg-ribbon">Most Popular</div></div>
+      <div class="pkg-body">
+        <div class="pkg-for">For 3–4 guests</div>
+        <div class="pkg-name">The Gathering</div>
+        <div class="pkg-desc">Effortless elegance for a small group</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Full linen table & floor setup</li>
+          <li>Styled cushions & layered textiles</li>
+          <li>Abundant floral arrangement</li>
+          <li>Personalised signage & décor</li>
+          <li>Champagne or welcome drinks</li>
+          <li>3-hour window · Setup included</li>
+        </ul>
+        <div class="pkg-price-row"><span class="pkg-price">$200</span><span class="pkg-pnote">/ experience</span></div>
+        <button class="btn-pkg" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book This Experience</button>
+      </div>
+    </div>
+
+    <div class="pkg">
+      <div class="pkg-top-img"><div class="pkg-top-img-inner"><span class="pkg-top-img-icon">✨</span></div></div>
+      <div class="pkg-body">
+        <div class="pkg-for">For 5–8 guests</div>
+        <div class="pkg-name">The Celebration</div>
+        <div class="pkg-desc">A grand experience for the whole group</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Grand linen table & full floor setup</li>
+          <li>Luxury cushions & styled throws</li>
+          <li>Floral installation centrepiece</li>
+          <li>Custom signage & personalisation</li>
+          <li>Full drinks & grazing spread</li>
+          <li>4-hour window · On-site host</li>
+        </ul>
+        <div class="pkg-price-row"><span class="pkg-price">$280</span><span class="pkg-pnote">/ experience</span></div>
+        <button class="btn-pkg" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book This Experience</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-sec" id="gallery">
+  <div class="sec-center">
+    <div class="eyebrow">Our Portfolio</div>
+    <div class="eyebrow-line"></div>
+    <h2 class="sec-title">Love Stories <em>We've Told</em></h2>
+    <p class="sec-sub">Browse our collection of beautiful setups we have had the pleasure of styling</p>
+  </div>
+  <div class="gallery-mosaic" id="portfolioGrid">
+    <div class="gm-item tall"><div class="gm-inner gc1" style="height:100%;"><div class="gm-overlay"><span class="gm-cap">Golden hour tables</span></div></div></div>
+    <div class="gm-item"><div class="gm-inner gc2" style="height:100%;"><div class="gm-overlay"><span class="gm-cap">Blush & roses</span></div></div></div>
+    <div class="gm-item"><div class="gm-inner gc3" style="height:100%;"><div class="gm-overlay"><span class="gm-cap">Candlelit evenings</span></div></div></div>
+    <div class="gm-item"><div class="gm-inner gc4" style="height:100%;"><div class="gm-overlay"><span class="gm-cap">Styled for you</span></div></div></div>
+    <div class="gm-item"><div class="gm-inner gc5" style="height:100%;"><div class="gm-overlay"><span class="gm-cap">Garden evenings</span></div></div></div>
+    <div class="gm-item wide"><div class="gm-inner gc6" style="height:100%;"><div class="gm-overlay"><span class="gm-cap">The full experience</span></div></div></div>
+  </div>
+  <div class="gallery-cta">
+    <a class="btn-outline-dark" href="https://instagram.com/willowandrose.co" target="_blank" rel="noopener">View Full Portfolio on Instagram</a>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons" id="addons">
+  <div class="sec-center">
+    <div class="eyebrow">Enhance Your Experience</div>
+    <div class="eyebrow-line"></div>
+    <h2 class="sec-title">Everything <em>You Need</em></h2>
+    <p class="sec-sub" style="color:var(--f5);">Let us take all digital stress from your picnic planning journey & remove all guesswork</p>
+  </div>
+  <div class="addon-grid" id="addonGrid">
+    <div class="addon"><div class="addon-icon-box">🌹</div><div class="addon-content"><div class="addon-name">Bouquet of Flowers</div><div class="addon-price">$30 per dozen</div><div class="addon-desc">Fresh, seasonal blooms beautifully wrapped and presented alongside your setup.</div><div class="addon-tags"><span class="addon-tag">Fresh Florals</span><span class="addon-tag">Seasonal</span></div></div></div>
+    <div class="addon"><div class="addon-icon-box">💐</div><div class="addon-content"><div class="addon-name">Floral Arrangement</div><div class="addon-price">From $20+</div><div class="addon-desc">Bespoke fresh floral centrepieces designed for your table, tailored to your colour palette.</div><div class="addon-tags"><span class="addon-tag">Table Centrepiece</span><span class="addon-tag">Bespoke</span></div></div></div>
+    <div class="addon"><div class="addon-icon-box">🎨</div><div class="addon-content"><div class="addon-name">Painting for Two</div><div class="addon-price">$30</div><div class="addon-desc">Canvas, easel, paint and brushes fully provided — a fun and romantic activity for couples.</div><div class="addon-tags"><span class="addon-tag">Couples Activity</span><span class="addon-tag">All Included</span></div></div></div>
+    <div class="addon"><div class="addon-icon-box">⛺</div><div class="addon-content"><div class="addon-name">Tan Canopy 10×10</div><div class="addon-price">$40</div><div class="addon-desc">A stunning boho-style canopy providing shade, shelter and the most beautiful photo backdrop.</div><div class="addon-tags"><span class="addon-tag">Shade & Shelter</span><span class="addon-tag">Photo-Perfect</span></div></div></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Start Planning?</h2>
+  <p>Tell us about your occasion and we'll create something truly unforgettable</p>
+  <button class="btn-cta-white" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Get Started Today</button>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="sec-center">
+    <div class="eyebrow">Happy Couples</div>
+    <div class="eyebrow-line"></div>
+    <h2 class="sec-title">What Our Guests <em>Say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><p class="testi-text">Willow & Rosé turned our anniversary into something truly magical. Every single detail was so thoughtfully considered — we never wanted to leave.</p><div class="testi-name">— Amara & James</div><div class="testi-occ">Anniversary picnic</div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><p class="testi-text">I booked The Gathering for my best friend's birthday and everyone was blown away. The florals, the atmosphere, the whole setup — pure perfection.</p><div class="testi-name">— Sophie R.</div><div class="testi-occ">Birthday celebration</div></div>
+    <div class="testi"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><p class="testi-text">Worth every penny. They set everything up while we were away and we came back to pure magic. The most beautiful afternoon of our entire summer.</p><div class="testi-name">— The Williams Family</div><div class="testi-occ">Summer gathering</div></div>
+  </div>
+
+  <div class="testi-feature">
+    <div class="testi-feature-stars">★★★★★</div>
+    <p class="testi-feature-text">"Working with Willow & Rosé was the best decision we made for our wedding. Their professionalism, care, attention, and dedication to us was absolutely perfect."</p>
+    <div class="testi-feature-author">— Gracious & Paul Wilmore, Anniversary Picnic</div>
+  </div>
+
+  <div class="testi-counters">
+    <div class="counter"><div class="counter-num">100+</div><div class="counter-lbl">Events Styled</div></div>
+    <div class="counter"><div class="counter-num">5★</div><div class="counter-lbl">Happy Clients</div></div>
+    <div class="counter"><div class="counter-num">2</div><div class="counter-lbl">Cities Served</div></div>
+    <div class="counter"><div class="counter-num">7</div><div class="counter-lbl">Days Available</div></div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<div class="booking" id="booking">
+  <div class="booking-img">
+    <div class="booking-img-content">
+      <div class="eyebrow" style="color:var(--b3);margin-bottom:0.4rem;">Let's Plan Your Perfect Day</div>
+      <div class="booking-img-title">Reserve Your<br/><em>Date</em> Today</div>
+      <div class="booking-img-sub">We'll be in touch within 24 hours</div>
+      <ul class="booking-contact">
+        <li><span class="bc-dot"></span><a href="mailto:bookings@willowandroseco.com">bookings@willowandroseco.com</a></li>
+        <li><span class="bc-dot"></span><a href="tel:+18322638293">832-263-8293</a></li>
+        <li><span class="bc-dot"></span><a href="https://instagram.com/willowandrose.co" target="_blank" rel="noopener">@willowandrose.co</a></li>
+        <li><span class="bc-dot"></span><a href="https://willowandroseco.com">willowandroseco.com</a></li>
+        <li><span class="bc-dot"></span>Katy &amp; Houston, Texas</li>
+        <li><span class="bc-dot"></span>Available 7 days a week</li>
+      </ul>
+    </div>
+  </div>
+  <div class="booking-form-panel">
+    <div class="eyebrow-line" style="justify-content:flex-start;margin-bottom:0.5rem;"><span style="font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--b1);">Get in Touch</span></div>
+    <h2>Tell Us About<br/><em>Your Occasion</em></h2>
+    <p>Fill out the form below and we'll reach out to discuss your perfect picnic experience.</p>
+    <form class="form-fields" id="inquiryForm" onsubmit="handleSubmit(event)">
+      <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off"/>
+      <div class="frow">
+        <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="Jane" required/></div>
+        <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith" required/></div>
+      </div>
+      <div class="field"><label>Email Address</label><input type="email" name="email" placeholder="jane@email.com" required/></div>
+      <div class="field"><label>Phone Number</label><input type="tel" name="phone" id="phoneInput" placeholder="(832) 000-0000" required inputmode="numeric" maxlength="14" pattern="\(\d{3}\) \d{3}-\d{4}" title="Enter a valid US phone number, e.g. (832) 263-8293"/></div>
+      <div class="frow">
+        <div class="field"><label>Preferred Date</label><input type="date" name="event_date" required/></div>
+        <div class="field"><label>Number of Guests</label><input type="number" name="guests" placeholder="2" min="1" max="20"/></div>
+      </div>
+      <div class="field"><label>Package of Interest</label>
+        <select name="package" id="packageSelect" required>
+          <option value="" disabled selected>Select a package…</option>
+          <option>The Intimate — $150 (2 guests)</option>
+          <option>The Gathering — $200 (3–4 guests)</option>
+          <option>The Celebration — $280 (5–8 guests)</option>
+          <option>Not sure yet / Custom request</option>
+        </select>
+      </div>
+      <fieldset class="addon-checks">
+        <legend>Add-Ons (Optional)</legend>
+        <div class="addon-check-grid" id="addonCheckGrid">
+          <label class="addon-check"><input type="checkbox" name="addons[]" value="Bouquet of Flowers — $30 per dozen"/><span class="addon-check-label">Bouquet of Flowers<small>$30 per dozen</small></span></label>
+          <label class="addon-check"><input type="checkbox" name="addons[]" value="Floral Arrangement — From $20+"/><span class="addon-check-label">Floral Arrangement<small>From $20+</small></span></label>
+          <label class="addon-check"><input type="checkbox" name="addons[]" value="Painting for Two — $30"/><span class="addon-check-label">Painting for Two<small>$30</small></span></label>
+          <label class="addon-check"><input type="checkbox" name="addons[]" value="Tan Canopy 10×10 — $40"/><span class="addon-check-label">Tan Canopy 10×10<small>$40</small></span></label>
+        </div>
+      </fieldset>
+      <div class="field"><label>Tell Us About Your Occasion</label><textarea name="message" placeholder="Anniversary, birthday, proposal, girls' brunch… tell us everything!"></textarea></div>
+      <button type="submit" class="btn-submit" id="submitBtn">Send My Inquiry ♥</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-top">
+  <div class="ft-brand">
+    <img src="images/logo.png" alt="Willow & Rosé — Luxury Picnic Experiences" class="ft-logo-img"/>
+    <div class="ft-desc">Beautiful moments, meaningful memories. Based in Katy & Houston, Texas — serving unforgettable al fresco experiences 7 days a week.</div>
+  </div>
+  <div class="ft-col"><h4>Experiences</h4><ul id="ftPkgList"><li><a href="#packages">The Intimate ($150)</a></li><li><a href="#packages">The Gathering ($200)</a></li><li><a href="#packages">The Celebration ($280)</a></li><li><a href="#addons">Add-Ons</a></li></ul></div>
+  <div class="ft-col"><h4>Occasions</h4><ul><li><a href="#booking">Date Nights</a></li><li><a href="#booking">Birthdays</a></li><li><a href="#booking">Proposals</a></li><li><a href="#booking">Girls' Gatherings</a></li><li><a href="#booking">Special Occasions</a></li></ul></div>
+  <div class="ft-col"><h4>Get in Touch</h4><ul><li><a href="mailto:bookings@willowandroseco.com">bookings@willowandroseco.com</a></li><li><a href="tel:8322638293">832-263-8293</a></li><li><a href="#">@willowandrose.co</a></li><li><a href="#">willowandroseco.com</a></li></ul></div>
+</div>
+<div class="footer-bottom">
+  <div class="fb-copy">© 2025 Willow & Rosé Luxury Picnics · Katy & Houston, Texas · All rights reserved</div>
+  <div class="fb-social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+</div>
+
+<script>
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('nav');
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Hamburger menu
+function toggleMob(){
+  const menu=document.getElementById('mobileMenu');
+  const burger=document.getElementById('hamburger');
+  const open=menu.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMob(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ===== GOOGLE SHEETS CONTENT LOADER =====
+// Owner edits prices/add-ons/portfolio in a Google Sheet; this fetches the sheet
+// on every page load and overwrites the hardcoded defaults. If the fetch fails
+// (sheet deleted, internet down, etc.) the hardcoded defaults stay visible.
+//
+// SETUP:
+// 1. Create a Google Sheet with three tabs named exactly: Packages, Addons, Portfolio
+// 2. Share the sheet: "Anyone with the link can view"
+// 3. Copy the sheet ID from its URL — the long string between /d/ and /edit
+// 4. Paste it below as SHEET_ID
+// Column headers required per tab are documented in OWNER_GUIDE.md and content.json
+const SHEET_ID='1vsBtlrFFCI-db9RJ34tRCWz8RS-WEbyW21v7MdDGcJk';
+const SHEET_API=id=>tab=>`https://opensheet.elk.sh/${id}/${tab}`;
+
+async function loadContent(){
+  if(!SHEET_ID||SHEET_ID==='REPLACE_WITH_GOOGLE_SHEET_ID')return;
+  const api=SHEET_API(SHEET_ID);
+  const safe=async u=>{try{const r=await fetch(u);if(!r.ok)return null;return await r.json();}catch(e){return null;}};
+  const [packages,addons,portfolio]=await Promise.all([safe(api('Packages')),safe(api('Addons')),safe(api('Portfolio'))]);
+  if(packages&&packages.length)renderPackages(packages);
+  if(addons&&addons.length){renderAddons(addons);renderAddonCheckboxes(addons);}
+  if(portfolio&&portfolio.length)renderPortfolio(portfolio);
+}
+
+function renderPackages(rows){
+  const grid=document.getElementById('pkgGrid');
+  const sel=document.getElementById('packageSelect');
+  const ftList=document.getElementById('ftPkgList');
+  if(!grid)return;
+  const isTrue=v=>String(v||'').toLowerCase().trim().match(/^(y|yes|true|1)$/);
+  grid.innerHTML=rows.map(p=>{
+    const features=String(p.features||'').split('|').map(f=>f.trim()).filter(Boolean).map(f=>`<li>${esc(f)}</li>`).join('');
+    const featured=isTrue(p.featured);
+    const ribbon=featured?'<div class="pkg-ribbon">Most Popular</div>':'';
+    return `<div class="pkg${featured?' featured':''}">
+      <div class="pkg-top-img"><div class="pkg-top-img-inner"><span class="pkg-top-img-icon">${esc(p.icon||'🌿')}</span></div>${ribbon}</div>
+      <div class="pkg-body">
+        <div class="pkg-for">${esc(p.for||'')}</div>
+        <div class="pkg-name">${esc(p.name||'')}</div>
+        <div class="pkg-desc">${esc(p.desc||'')}</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">${features}</ul>
+        <div class="pkg-price-row"><span class="pkg-price">${esc(p.price||'')}</span><span class="pkg-pnote">${esc(p.price_note||'')}</span></div>
+        <button class="btn-pkg" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book This Experience</button>
+      </div>
+    </div>`;
+  }).join('');
+  if(sel){
+    sel.innerHTML='<option value="" disabled selected>Select a package…</option>'+rows.map(p=>`<option>${esc(p.name||'')} — ${esc(p.price||'')} (${esc(p.for||'')})</option>`).join('')+'<option>Not sure yet / Custom request</option>';
+  }
+  if(ftList){
+    ftList.innerHTML=rows.map(p=>`<li><a href="#packages">${esc(p.name||'')} (${esc(p.price||'')})</a></li>`).join('')+'<li><a href="#addons">Add-Ons</a></li>';
+  }
+}
+
+function renderAddons(rows){
+  const grid=document.getElementById('addonGrid');
+  if(!grid)return;
+  grid.innerHTML=rows.map(a=>{
+    const tags=String(a.tags||'').split('|').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="addon-tag">${esc(t)}</span>`).join('');
+    return `<div class="addon"><div class="addon-icon-box">${esc(a.icon||'✦')}</div><div class="addon-content"><div class="addon-name">${esc(a.name||'')}</div><div class="addon-price">${esc(a.price||'')}</div><div class="addon-desc">${esc(a.desc||'')}</div><div class="addon-tags">${tags}</div></div></div>`;
+  }).join('');
+}
+
+function renderAddonCheckboxes(rows){
+  const grid=document.getElementById('addonCheckGrid');
+  if(!grid)return;
+  grid.innerHTML=rows.map(a=>{
+    const val=`${a.name||''} — ${a.price||''}`;
+    return `<label class="addon-check"><input type="checkbox" name="addons[]" value="${esc(val)}"/><span class="addon-check-label">${esc(a.name||'')}<small>${esc(a.price||'')}</small></span></label>`;
+  }).join('');
+}
+
+function encodeImagePath(p){
+  if(!p)return '';
+  if(/^https?:\/\//i.test(p))return p; // external URL — trust as-is
+  return p.split('/').map(seg=>seg?encodeURIComponent(seg):seg).join('/');
+}
+
+function renderPortfolio(rows){
+  const grid=document.getElementById('portfolioGrid');
+  if(!grid)return;
+  const grads=['gc1','gc2','gc3','gc4','gc5','gc6'];
+  grid.innerHTML=rows.map((p,i)=>{
+    const size=(p.size||'').toLowerCase().trim();
+    const sizeClass=size==='tall'?' tall':size==='wide'?' wide':'';
+    const img=encodeImagePath(String(p.image_url||'').trim());
+    const bg=img?`background-image:url('${img}');background-size:cover;background-position:center;`:'';
+    const fallback=img?'':grads[i%grads.length];
+    return `<div class="gm-item${sizeClass}"><div class="gm-inner ${fallback}" style="height:100%;${bg}"><div class="gm-overlay"><span class="gm-cap">${esc(p.caption||'')}</span></div></div></div>`;
+  }).join('');
+}
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+document.addEventListener('DOMContentLoaded',loadContent);
+
+// US phone mask — formats as (XXX) XXX-XXXX while the user types
+document.addEventListener('DOMContentLoaded',()=>{
+  const ph=document.getElementById('phoneInput');
+  if(!ph)return;
+  const format=v=>{
+    const d=v.replace(/\D/g,'').slice(0,10);
+    if(d.length<4)return d;
+    if(d.length<7)return `(${d.slice(0,3)}) ${d.slice(3)}`;
+    return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+  };
+  ph.addEventListener('input',e=>{e.target.value=format(e.target.value);});
+  ph.addEventListener('paste',e=>{e.preventDefault();const t=(e.clipboardData||window.clipboardData).getData('text');e.target.value=format(t);});
+});
+
+// Form submit — posts to our Vercel serverless function (api/inquiry.js)
+// which forwards via Gmail SMTP to bookings@willowandroseco.com
+async function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=document.getElementById('submitBtn');
+  const status=document.getElementById('formStatus');
+  const origLabel=btn.textContent;
+  status.className='form-status';
+  btn.disabled=true;
+  btn.textContent='Sending…';
+  try{
+    // Serialize FormData → JSON object. Repeated keys (addons[]) become arrays.
+    const fd=new FormData(form);
+    const data={};
+    for(const [k,v] of fd.entries()){
+      const key=k.endsWith('[]')?k.slice(0,-2):k;
+      if(k.endsWith('[]')){data[key]=data[key]||[];data[key].push(v);}
+      else data[key]=v;
+    }
+    const res=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const out=await res.json().catch(()=>({}));
+    if(res.ok && out.success){
+      status.textContent='Inquiry sent! We\'ll be in touch within 24 hours ♥';
+      status.className='form-status show success';
+      form.reset();
+      btn.textContent='Sent ♥';
+      setTimeout(()=>{btn.textContent=origLabel;btn.disabled=false;},4000);
+    }else{
+      throw new Error(out.message||'Submission failed');
+    }
+  }catch(err){
+    status.textContent='Something went wrong. Please try again or email bookings@willowandroseco.com directly.';
+    status.className='form-status show error';
+    btn.textContent=origLabel;
+    btn.disabled=false;
+  }
+}
+</script>
+</body>
+</html>
