@@ -39,7 +39,12 @@ export default async function handler(req, res){
 
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_APP_PASSWORD;
-  const to   = process.env.NOTIFY_TO || user;
+  // NOTIFY_TO can be a single address or a comma-separated list (e.g. "a@x.com, b@y.com").
+  // Falls back to GMAIL_USER if not set.
+  const to = (process.env.NOTIFY_TO || user || '')
+    .split(',')
+    .map(e => e.trim())
+    .filter(Boolean);
 
   if(!user || !pass){
     console.error('Missing GMAIL_USER or GMAIL_APP_PASSWORD env vars');
