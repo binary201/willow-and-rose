@@ -91,7 +91,7 @@ export default async function handler(req, res){
       from: `"Willow & Rosé Website" <${user}>`,
       to,
       replyTo: d.email,
-      subject: `New Inquiry — ${d.first_name} ${d.last_name || ''}`.trim(),
+      subject: `Willow & Rosé Inquiry - ${d.first_name} ${d.last_name || ''}`.trim(),
       text,
       html
     });
